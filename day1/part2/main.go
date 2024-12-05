@@ -1,6 +1,7 @@
 package main
 
 import (
+	"aoc24-pleg/utils"
 	"fmt"
 	"os"
 	"strconv"
@@ -9,9 +10,7 @@ import (
 
 func main() {
 	dat, err := os.ReadFile("../input.txt")
-	if err != nil {
-		panic(err)
-	}
+	utils.Panic_fn(err)
 	var arr1 []int
 	map2 := make(map[int]int)
 	for _, str := range strings.Split(string(dat), "\n") {
@@ -28,17 +27,13 @@ func main() {
 
 func convertAndAppend(number string, arr *[]int) {
 	f1, err := strconv.Atoi(number)
-	if err != nil {
-		panic(err)
-	}
+	utils.Panic_fn(err)
 	*arr = append(*arr, f1)
 }
 
 func convertAndCount(number string, m *map[int]int) {
 	i1, err := strconv.Atoi(number)
-	if err != nil {
-		panic(err)
-	}
+	utils.Panic_fn(err)
 	val, exists := (*m)[i1]
 	if exists {
 		(*m)[i1] = val + 1

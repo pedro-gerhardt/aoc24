@@ -1,6 +1,7 @@
 package main
 
 import (
+	"aoc24-pleg/utils"
 	"fmt"
 	"math"
 	"os"
@@ -11,9 +12,7 @@ import (
 
 func main() {
 	dat, err := os.ReadFile("input.txt")
-	if err != nil {
-		panic(err)
-	}
+	utils.Panic_fn(err)
 	var arr1 []float64
 	var arr2 []float64
 	for _, str := range strings.Split(string(dat), "\n") {
@@ -32,8 +31,6 @@ func main() {
 
 func convertAndAppend(number string, arr *[]float64) {
 	f1, err := strconv.ParseFloat(number, 64)
-	if err != nil {
-		panic(err)
-	}
+	utils.Panic_fn(err)
 	*arr = append(*arr, f1)
 }

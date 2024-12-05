@@ -1,6 +1,7 @@
 package main
 
 import (
+	"aoc24-pleg/utils"
 	"fmt"
 	"math"
 	"os"
@@ -11,16 +12,16 @@ import (
 func main() {
 	fmt.Println("122" < "13")
 	data, err := os.ReadFile("../input.txt")
-	panic_fn(err)
+	utils.Panic_fn(err)
 
 	total := 0
 	for _, report := range strings.Split(string(data), "\n") {
 		levels := strings.Split(report, " ")
 
 		val0, err := strconv.ParseFloat(levels[0], 64)
-		panic_fn(err)
+		utils.Panic_fn(err)
 		val1, err := strconv.ParseFloat(levels[1], 64)
-		panic_fn(err)
+		utils.Panic_fn(err)
 		asc := val0 < val1
 
 		skip := false
@@ -28,9 +29,9 @@ func main() {
 			idx := idx_base + 1
 
 			val, err := strconv.ParseFloat(levels[idx], 64)
-			panic_fn(err)
+			utils.Panic_fn(err)
 			val2, err := strconv.ParseFloat(levels[idx-1], 64)
-			panic_fn(err)
+			utils.Panic_fn(err)
 
 			abs := math.Abs(val - val2)
 			adj := abs > 0 && abs < 4
@@ -47,10 +48,4 @@ func main() {
 	}
 
 	fmt.Println(total)
-}
-
-func panic_fn(err error) {
-	if err != nil {
-		panic(err)
-	}
 }
